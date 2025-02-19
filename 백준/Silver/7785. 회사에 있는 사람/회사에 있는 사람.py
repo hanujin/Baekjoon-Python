@@ -1,11 +1,14 @@
-company = set()
+import sys
+
+company = {}
+input = sys.stdin.readline
 
 for _ in range(int(input())):
     people, command = input().split()
 
     if command == "enter":
-        company.add(people)
-    elif command == "leave":
-        company.discard(people)
+        company[people] = True
+    else:
+        del company[people]
 
-print("\n".join(sorted(company, reverse=True)))
+print("\n".join(sorted(company.keys(), reverse=True)))
